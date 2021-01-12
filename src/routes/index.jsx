@@ -2,7 +2,7 @@ import React, {lazy, Suspense} from 'react'
 import {BrowserRouter as Router, Redirect, Route, Switch,} from 'react-router-dom'
 import App from "../app/App";
 
-const Welcome = lazy(() => import('../pages/Welcome/index'))
+const Welcome = lazy(() => import('../pages/Welcome'))
 
 function BaseRouter() {
     return <Router basename='/'>
