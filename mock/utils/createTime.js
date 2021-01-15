@@ -1,6 +1,7 @@
 // 创建时间
 let createTime = function () { //author: meizz
-    let time = Math.random() * 10000000000 + 15700000000000
+    // let time = Math.random() * 10000000000 + 15700000000000
+    let time = null
     let date = time ? new Date(time) : new Date();
 
     let fmt = "yyyy-MM-dd hh:mm:ss";
@@ -18,4 +19,5 @@ let createTime = function () { //author: meizz
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 };
+console.log(createTime())
 module.exports = createTime

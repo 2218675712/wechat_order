@@ -1,13 +1,1 @@
-[{
-	"id": "ODgzMWU2ZmQtY2JiOS00N2JmLWJmYTItZWE4MTM1NGM2YTIy",
-	"shopId": "b9a5eea53c8d4f154174dbff53892e24",
-	"userId": "2a6cbc6c27114fdda4045af8550dd666",
-	"tableNum": "45",
-	"people": 0
-}, {
-	"id": "YzllMTVlZWUtYzMxZi00NGZkLTlmNDUtNjhmMzNmNjUxMjU3",
-	"shopId": "b9a5eea53c8d4f154174dbff53892e24",
-	"userId": "2a6cbc6c27114fdda4045af8550dd666",
-	"tableNum": "45",
-	"people": 0
-}]
+[{"id":"ODgzMWU2ZmQtY2JiOS00N2JmLWJmYTItZWE4MTM1NGM2YTIy","shopId":"b9a5eea53c8d4f154174dbff53892e24","userId":"2a6cbc6c27114fdda4045af8550dd666","tableNum":"45","people":0},{"id":"YzllMTVlZWUtYzMxZi00NGZkLTlmNDUtNjhmMzNmNjUxMjU3","shopId":"b9a5eea53c8d4f154174dbff53892e24","userId":"2a6cbc6c27114fdda4045af8550dd666","tableNum":"45","people":0},{"id":"ZGFlYjQ2OTktZTg1ZS00ZjhlLThlMjYtMWQ3MTk0YzA1ZDgz","people":3,"createTime":"2467-10-20 11:14:29"},{"id":"MjgyYjI5Y2MtNzFiOS00OWJhLTlmYTktNDVjZTQ2ZDllMDFj","shopId":"123","userId":"456","tableNum":"10","people":3,"createTime":"2021-01-15 22:37:03"},{"id":"YTBlNmU5ZmItYjk2MS00NjMxLWE1YmUtMGRlM2Q4MTE1ZDM2","shopId":"123","userId":"456","tableNum":"10","people":7,"createTime":"2021-01-15 22:38:46"},{"id":"NDI2N2IwOTYtMTM1OC00OWZjLTgzZjQtOTNiZDI5ODQ0ZWQy","shopId":"123","userId":"456","tableNum":"10","people":7,"createTime":"2021-01-15 22:40:47"},{"id":"NTgzNzI0MjUtYWY1NS00NGM1LWI4OGEtOTI5MmEzZWYzOWZl","shopId":"123","userId":"456","tableNum":"10","people":3,"createTime":"2021-01-15 22:40:51"},{"id":"YjAyMTZhZDUtNWQzYS00MDk5LWI5YTQtNzAwM2VkYjIxYTdj","shopId":"123","userId":"456","tableNum":"10","people":2,"createTime":"2021-01-15 22:41:04"},{"id":"YzA5OTA2NjctOWM3NC00OWFlLWJmMzktYmNkZmZhYWVmZjdk","shopId":"123","userId":"456","tableNum":"100","people":6,"createTime":"2021-01-15 22:41:11"},{"id":"NTgzNWI4NWMtYzU3My00NzE4LWFiMTItZWExYTI4YzNjYmJh","shopId":"123","userId":"456","tableNum":"100","people":2,"createTime":"2021-01-15 22:41:25"},{"id":"OGNjMmQ4NGQtNDI0NS00OGU3LThkMjEtZDIxYWIxOTE0MzE0","shopId":"123","userId":"456","tableNum":"100","people":6,"createTime":"2021-01-15 22:43:01"},{"id":"Yjc0MzI2MTgtNjliNi00ZTcwLWE3NmEtZTU3OTExMDUzODNh","shopId":"123","userId":"456","tableNum":"100","people":3,"createTime":"2021-01-15 22:43:35"}]
