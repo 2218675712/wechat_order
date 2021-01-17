@@ -38,4 +38,20 @@ router.get("/getMenuList", async (req, res, next) => {
         msg: 'ok'
     })
 })
+// 呼叫服务员
+router.post("/callOut", async (req, res, next) => {
+    const {shopId, tableNum, userId} = req.body
+    const result = {
+        id: Unique(),
+        shopId: shopId,
+        tableNum: tableNum,
+        userId: userId,
+        createTime: createTime()
+    }
+    await fileHandle.add('../files/callOut', result)
+    res.send({
+        code: 200,
+        msg: 'ok'
+    })
+})
 module.exports = router
