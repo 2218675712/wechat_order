@@ -8,7 +8,7 @@ router.get("/getShopMsg", async (req, res, next) => {
     const {id} = req.query
     let data = await fileHandle.read('../files/shop')
     const result = data.find((item) => {
-        return id === id
+        return item.id === id
     })
     res.send({
         code: 200,
@@ -21,7 +21,7 @@ router.get("/getUserMsg", async (req, res, next) => {
     const {id} = req.query
     let data = await fileHandle.read('../files/users')
     const result = data.find((item) => {
-        return id === id
+        return item.id === id
     })
     res.send({
         code: 200,
