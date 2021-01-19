@@ -31,7 +31,9 @@ const SelectPeople = (props) => {
         }
         welcome.addPeople(data).then((data) => {
             alert('提交成功', 'success', 1000)
-            props.history.push("/project/shop")
+            setTimeout(() => {
+                props.history.push("/project/list")
+            }, 1000)
         })
     }
     return <div className={Styles.selectPeople}>

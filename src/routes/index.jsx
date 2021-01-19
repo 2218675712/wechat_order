@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch,} from 'react-router-do
 import App from "../app/App";
 
 const Welcome = lazy(() => import('../pages/Welcome'))
+const Project = lazy(() => import('../pages/Project'))
 
 function BaseRouter() {
     return <Router basename='/'>
@@ -13,10 +14,12 @@ function BaseRouter() {
                         return <Redirect to='/welcome/shop'/>
                     }}/>
                     <Route path='/welcome' component={Welcome}/>
+                    <Route path='/project' component={Project}/>
                 </Switch>
             </Suspense>
 
         </App>
     </Router>
 }
+
 export default BaseRouter
