@@ -4,9 +4,13 @@ import Styles from './index.module.less'
 import {project} from "../../../services";
 import {getParams} from "../../../utils/tool";
 import BScroll from 'better-scroll'
+import SearchBtn from "../../../components/SearchBtn";
+import BtnLink from "../../../components/BtnLink";
 
 const List = (props) => {
     const [list, setlist] = useState([])
+    const [scroll, setscroll] = useState(null);
+    const history = props.history
     // 初始化
     useEffect(() => {
 
@@ -25,11 +29,14 @@ const List = (props) => {
         const scroll = new BScroll("#scroll", {
             click: true
         })
+        setscroll(scroll)
         return () => {
             scroll.destroy()
         }
     }, [])
     return <div id='scroll' className={Styles.List}>
+        {/*<SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>*/}
+        <BtnLink icon='icon-publishgoods_fill' style={{bottom:'0.4rem',right:'0.2rem'}}>购物车</BtnLink>
         <main>
             <nav>
                 <Link to='/project/list'>
@@ -60,7 +67,7 @@ const List = (props) => {
                                 items.map((jtem, j) => {
                                     let {name, price, memberPrice, imagePath} = jtem
                                     return <li key={j}>
-                                        <img src={imagePath} />
+                                        <img src={imagePath}/>
                                         <h4>{name}</h4>
                                         <b>会员:¥{memberPrice}</b>
                                         <span>原价:¥{price}</span>
