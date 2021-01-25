@@ -6,6 +6,7 @@ import {getParams} from "../../../utils/tool";
 import BScroll from 'better-scroll'
 import SearchBtn from "../../../components/SearchBtn";
 import BtnLink from "../../../components/BtnLink";
+import MenuItems from "../../../components/MenuItems";
 
 const List = (props) => {
     const [list, setlist] = useState([])
@@ -36,7 +37,8 @@ const List = (props) => {
     }, [])
     return <div id='scroll' className={Styles.List}>
         {/*<SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>*/}
-        <BtnLink icon='icon-publishgoods_fill' style={{bottom:'0.4rem',right:'0.2rem'}}>购物车</BtnLink>
+        {/*<BtnLink icon='icon-publishgoods_fill' style={{bottom:'0.4rem',right:'0.2rem'}}>购物车</BtnLink>*/}
+        <MenuItems list={list}>购物车</MenuItems>
         <main>
             <nav>
                 <Link to='/project/list'>
