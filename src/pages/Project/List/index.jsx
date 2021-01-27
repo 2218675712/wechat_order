@@ -7,6 +7,7 @@ import BScroll from 'better-scroll'
 import SearchBtn from "../../../components/SearchBtn";
 import BtnLink from "../../../components/BtnLink";
 import MenuItems from "../../../components/MenuItems";
+import Nav from "../../../components/Nav";
 
 const List = (props) => {
     const [list, setlist] = useState([])
@@ -43,6 +44,7 @@ const List = (props) => {
         <SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>
         <BtnLink icon='icon-publishgoods_fill' style={{bottom: '0.4rem', right: '0.2rem'}}>购物车</BtnLink>
         <MenuItems list={list} findToClass={findToClass}>购物车</MenuItems>
+        <Nav/>
         <div id='scroll'  className={Styles.List}>
             <main>
                 <nav>
