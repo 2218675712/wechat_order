@@ -8,6 +8,7 @@ import SearchBtn from "../../../components/SearchBtn";
 import BtnLink from "../../../components/BtnLink";
 import MenuItems from "../../../components/MenuItems";
 import Nav from "../../../components/Nav";
+import CallOut from "../../../components/CallOut";
 
 const List = (props) => {
     const [list, setlist] = useState([])
@@ -35,17 +36,30 @@ const List = (props) => {
         }
     }, [])
 
+    // 根据侧边栏滑动找到对应商品
     const findToClass = (index) => {
         let top = document.getElementById(index).offsetTop
-        console.log(top)
         scroll.scrollTo(0, -top, 1000)
+    }
+    // 控制服务铃显示和隐藏
+    const [callout, setcallout] = useState(false)
+    // 呼叫
+    const sure = () => {
+        project.callOut({
+            shopId: getParams("shopId"),
+            tableNum: getParams("tableNum"),
+            userId: getParams("userId")
+        }).then(() => {
+            setcallout(false)
+        })
     }
     return <div>
         <SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>
         <BtnLink icon='icon-publishgoods_fill' style={{bottom: '0.4rem', right: '0.2rem'}}>购物车</BtnLink>
         <MenuItems list={list} findToClass={findToClass}>购物车</MenuItems>
         <Nav/>
-        <div id='scroll'  className={Styles.List}>
+        {callout && <CallOut cancel={() => setcallout(false)} sure={sure}/>}
+        <div id='scroll' className={Styles.List}>
             <main>
                 <nav>
                     <Link to='/project/list'>
@@ -60,8 +74,7 @@ const List = (props) => {
                         <i className='iconfont icon-document_fill'></i>
                         <span>点过的菜</span>
                     </Link>
-                    <a onClick={() => {
-                    }}>
+                    <a onClick={() => setcallout(true)}>
                         <i className='iconfont icon-remind_fill'></i>
                         <span>服务铃</span>
                     </a>
