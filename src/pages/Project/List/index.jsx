@@ -66,7 +66,7 @@ const List = (props) => {
                         <i className='iconfont icon-examineandapprove'></i>
                         <span>随便点</span>
                     </Link>
-                    <Link to='/project/list'>
+                    <Link to='/project/hotlist'>
                         <i className='iconfont icon-flag_fill'></i>
                         <span>热销榜</span>
                     </Link>
