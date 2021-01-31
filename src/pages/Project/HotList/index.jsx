@@ -26,9 +26,9 @@ const HotList = (props) => {
         return () => {
             scroll.destroy()
         }
-    },[])
-    return <div className={Styles.out}>
-        <GoBack {...props}/>
+    }, [])
+    return <div>
+        <GoBack {...props}>返回</GoBack>
         <div className={Styles.HotList} id='scroll'>
             <main>
                 <nav>本店销量榜</nav>

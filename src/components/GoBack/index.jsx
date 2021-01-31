@@ -6,7 +6,7 @@ const GoBack= (props) => {
         history.go(-1)
     }}>
         <i className='iconfont icon-return'></i>
-        <span>返回</span>
+        <span>{props.children}</span>
     </p>
 }
 export default GoBack

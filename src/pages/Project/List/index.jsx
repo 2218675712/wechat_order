@@ -54,7 +54,8 @@ const List = (props) => {
         })
     }
     return <div>
-        <SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>
+        <SearchBtn icon='icon-search' cb={() => history.push('/project/search'+'?shopId='+getParams("shopId"))}/>
+        {/*<SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>*/}
         <BtnLink icon='icon-publishgoods_fill' style={{bottom: '0.4rem', right: '0.2rem'}}>购物车</BtnLink>
         <MenuItems list={list} findToClass={findToClass}>购物车</MenuItems>
         <Nav/>
@@ -66,7 +67,8 @@ const List = (props) => {
                         <i className='iconfont icon-examineandapprove'></i>
                         <span>随便点</span>
                     </Link>
-                    <Link to='/project/hotlist'>
+                    <Link to={'/project/hotlist'+'?shopId='+getParams("shopId")}>
+                    {/*<Link to='/project/hotlist'>*/}
                         <i className='iconfont icon-flag_fill'></i>
                         <span>热销榜</span>
                     </Link>
