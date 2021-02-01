@@ -3,6 +3,7 @@ const fileHandle = require("../utils/fileHandle")
 const Unique = require('../utils/Unique')
 const createTime = require("../utils/createTime");
 const router = express.Router()
+const {readMenuList} = require('./common/getInfo')
 // 获取店铺信息
 router.get("/getMenuList", async (req, res, next) => {
     const {id, type, search} = req.query
@@ -36,6 +37,19 @@ router.get("/getMenuList", async (req, res, next) => {
         code: 200,
         data: result || {},
         msg: 'ok'
+    })
+})
+// 获取菜单详情
+router.get('/getMenuDetail', async (req, res, next) => {
+    const {shopId, id} = req.query
+    let datas = await readMenuList(shopId)
+    let result = datas.find((item) => {
+        return item.id === id
+    })
+    res.send({
+        code: 200,
+        data: result || {},
+        msg: 'OK'
     })
 })
 // 呼叫服务员

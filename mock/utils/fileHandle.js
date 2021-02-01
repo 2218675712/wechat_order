@@ -62,16 +62,30 @@ module.exports = {
         })
         await this.write(url, result)
     },
-    /**
+/*    /!**
      * 删除一条数据
      * @param url   本地文件连接
      * @param id    要删除的数据
      * @returns {Promise<void>}
-     */
+     *!/
     async remove(url, id) {
         let result = await this.read(url)
         result = result.filter((item) => {
             return item.id != id
+        })
+        await this.write(url, result)
+    },*/
+    /**
+     * 删除一条数据
+     * @param url   本地文件连接
+     * @param type  要删除的数据对象
+     * @param id    数据的id
+     * @returns {Promise<void>}
+     */
+    async remove(url, type, id) {
+        let result = await this.read(url)
+        result = result.filter((item) => {
+            return item[type] != id
         })
         await this.write(url, result)
     }
