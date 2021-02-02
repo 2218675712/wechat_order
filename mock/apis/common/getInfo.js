@@ -11,5 +11,9 @@ module.exports = {
             pre.push(...jtem.items)
             return pre
         }, [])
+    },
+    getUsers:async ()=>{
+        let users=fileHandle.read('../files/users')
+        return users
     }
 }
