@@ -82,4 +82,22 @@ router.get("/getShopCar", async (req, res, next) => {
     })
 
 })
+//修改用餐人数
+router.post("/changePeople", async (req, res, next) => {
+    const {shopId, tableNum, people} = req.body
+    let data = await fileHandle.read("../files/table")
+
+    //修改数据
+    data = data.map((item) => {
+        if (item.shopId === shopId && item.tableNum === tableNum) {
+            item.people = people
+        }
+        return item
+    })
+    await fileHandle.write("../files/table", data)
+    res.send({
+        code: 200,
+        msg: "ok"
+    })
+})
 module.exports = router

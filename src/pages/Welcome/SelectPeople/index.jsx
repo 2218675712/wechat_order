@@ -32,7 +32,7 @@ const SelectPeople = (props) => {
         welcome.addPeople(data).then((data) => {
             alert('提交成功', 'success', 1000)
             setTimeout(() => {
-                props.history.push("/project/list")
+                props.history.push("/project/list" + '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum"))
             }, 1000)
         })
     }

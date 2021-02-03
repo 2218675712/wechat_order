@@ -21,7 +21,7 @@ const Shop = (props) => {
             <span>{shop.shop_name}</span>
         </h2>
         <section>欢迎光临,{userInfo.nickname}</section>
-        <Link to='/welcome/selectPeople' className={Styles.btn} >开始点餐结账</Link>
+        <Link to={'/welcome/selectPeople'+'?shopId='+getParams("shopId")+'&userId='+getParams("userId")} className={Styles.btn} >开始点餐结账</Link>
     </div>
 }
 const RenderRouter = () => {
