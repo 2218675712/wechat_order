@@ -100,4 +100,42 @@ router.post("/changePeople", async (req, res, next) => {
         msg: "ok"
     })
 })
+
+//修改购物车菜单数量
+router.get("/changeShopCar", async (req, res, next) => {
+    const {id, count} = req.query
+    let data = await fileHandle.read("../files/shopCar")
+    let result = data.find((item) => {
+        if (item.id == id) {
+            return true
+        }
+        return false
+    })
+    if (result) {
+        result.count = count
+    }
+    await fileHandle.amend('../files/shopCar', result || {})
+    res.send({
+        code: 200,
+        msg: "ok"
+    })
+
+})
+// 清空购物车
+router.get("/clearShopCar", async (req, res, next) => {
+    const {shopId, tableNum} = req.query
+    let data = await fileHandle.read("../files/shopCar")
+    // 拿到的是个数组
+    let result = data.filter((item) => {
+        return item.shopId == shopId && item.tableNum == tableNum
+    })
+    for (const item of result) {
+        await fileHandle.remove("../files/shopCar", "id", item.id)
+    }
+    res.send({
+        code: 200,
+        msg: "ok"
+    })
+
+});
 module.exports = router
