@@ -104,9 +104,7 @@ module.exports = function (webpackEnv) {
                 loader: MiniCssExtractPlugin.loader,
                 // css is located in `static/css`, use '../../' to locate index.html folder
                 // in production `paths.publicUrlOrPath` can be a relative path
-                options: paths.publicUrlOrPath.startsWith('.')
-                    ? {publicPath: '../../'}
-                    : {},
+                options: paths.publicUrlOrPath.startsWith('.') ? {publicPath: '../../'} : {},
             },
             {
                 loader: require.resolve('css-loader'),

@@ -89,8 +89,8 @@ const List = (props) => {
                             <ul>
                                 {
                                     items.map((jtem, j) => {
-                                        let {name, price, memberPrice, imagePath} = jtem
-                                        return <li key={j}>
+                                        let {name, price, memberPrice, imagePath,id} = jtem
+                                        return <li key={j} onClick={()=>{history.push('/project/detail/'+id+'?shopId='+getParams("shopId"))}}>
                                             <img src={imagePath}/>
                                             <h4>{name}</h4>
                                             <b>会员:¥{memberPrice}</b>
