@@ -1,10 +1,1 @@
-[
-  {
-    "id": "70b95bd9-ff03-4bde-b3b6-8ccf516ece00",
-    "shopId": "b9a5eea53c8d4f154174dbff53892e24",
-    "userId": "orH6d1BlTsF3LiogJRJ3322BPREaSzz8",
-    "tableNum": "99",
-    "menuId": "b9a5eea53c8d4f154174dbff53892e24",
-    "count": "49"
-  }
-]
+[{"id":"70b95bd9-ff03-4bde-b3b6-8ccf516ece00","shopId":"b9a5eea53c8d4f154174dbff53892e24","userId":"orH6d1BlTsF3LiogJRJ3322BPREaSzz8","tableNum":"99","menuId":"b9a5eea53c8d4f154174dbff53892e24","count":"49"},{"id":"MDZmZTA2YTEtNWFjYi00ZjcxLWE3YjctMzBhZTBiNDNlZTBi","shopId":"b9a5eea53c8d4f154174dbff53892e24","userId":"2a6cbc6c27114fdda4045af8550dd666","tableNum":"10","menuId":"0003904266ecfb7a0166f8b4b0c439fd","count":4},{"id":"MjI4NjAwNWItYjRkYi00MjI5LThjZjItZWFiNDMwNDA1M2Fk","shopId":"b9a5eea53c8d4f154174dbff53892e24","userId":"2a6cbc6c27114fdda4045af8550dd666","tableNum":"10","menuId":"0003904266ecfc810166f8b4aeb538f5","count":5}]
