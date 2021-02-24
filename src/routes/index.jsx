@@ -4,6 +4,7 @@ import App from "../app/App";
 
 const Welcome = lazy(() => import('../pages/Welcome'))
 const Project = lazy(() => import('../pages/Project'))
+const ShopCar = lazy(() => import('../pages/ShopCar'))
 
 function BaseRouter() {
     return <Router basename='/'>
@@ -15,6 +16,7 @@ function BaseRouter() {
                     }}/>
                     <Route path='/welcome' component={Welcome}/>
                     <Route path='/project' component={Project}/>
+                    <Route path='/shopcar' component={ShopCar}/>
                 </Switch>
             </Suspense>
 
