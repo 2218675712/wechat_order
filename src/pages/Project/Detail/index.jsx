@@ -14,7 +14,7 @@ const Detail = (props) => {
             shopId: getParams('shopId'),
             id: match.params.id
         }).then((data) => {
-            console.log(data)
+            // console.log(data)
             setdata(data.data)
         })
     }, [])
@@ -29,7 +29,7 @@ const Detail = (props) => {
         }).then(() => {
             alert('购物车添加成功', 'success')
             setTimeout(() => {
-                history.push('/shopCar'+'?shopId='+getParams("shopId")+'&userId='+getParams("userId"))
+                history.push('/shopCar'+'?shopId='+getParams("shopId")+'&userId='+getParams("userId")+'&tableNum='+getParams("tableNum"))
             }, 1000)
         })
     }

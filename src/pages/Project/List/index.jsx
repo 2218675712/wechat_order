@@ -19,7 +19,7 @@ const List = (props) => {
         project.getMenuList(
             {id: getParams("shopId")}
         ).then((data) => {
-            console.log(data)
+            // console.log(data)
             setlist(data.data.kindMenus)
         })
 

@@ -20,17 +20,5 @@
         "setTaste": false,
         "phone": "111113232",
         "email": "34242234"
-    },
-    {
-        "openid": "orH6d1BlTsF3LiogJRJBPREaSzz8",
-        "nickname": "追梦人",
-        "sex": 1,
-        "language": "zh_CN",
-        "city": "济南",
-        "province": "山东",
-        "country": "中国",
-        "headimgurl": "http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWON3bMNsSNDDgib105KbAIsd5NPbmx74FOfA2Ivbq040t9gI27xGywiaah9annvYhIwus3Omk57Pg/132",
-        "privilege": [],
-        "id": "orH6d1BlTsF3LiogJRJBPREaSzz8"
     }
 ]

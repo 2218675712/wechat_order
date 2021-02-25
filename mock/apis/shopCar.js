@@ -50,13 +50,13 @@ router.get("/getShopCar", async (req, res, next) => {
     let menus = allMenus.reduce((pre, item) => {
         let arr = item.items.reduce((pre, jtem) => {
             let obj = result.find((ktem) => {
-                return jtem.id == ktem.id
+                return jtem.id == ktem.menuId
             })
             if (obj) {
                 let user = users.find((item) => {
                     return item.id == obj.userId
                 })
-                let data = Object.assign({}, obj, jtem, {user})
+                let data = Object.assign({}, jtem,obj, {user})
                 pre.push(data)
             }
             return pre
@@ -68,7 +68,7 @@ router.get("/getShopCar", async (req, res, next) => {
     }, [])
 
     let table = await fileHandle.read('../files/table')
-    table.find((item) => {
+    table=table.find((item) => {
         return item.shopId == shopId && item.tableNum == tableNum
     })
 
