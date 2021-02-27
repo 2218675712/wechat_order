@@ -1,14 +1,17 @@
 import Styles from './index.module.less'
 import Nav from "../../components/Nav";
 import BtnLink from "../../components/BtnLink";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {shopCar} from "../../services";
-import {getParams} from "../../utils/tool";
+import {getParams, serialize} from "../../utils/tool";
+import {shopCar as shopCarStore} from '../../store'
+import {observer} from "mobx-react";
 
-const ShopCar = (props) => {
-    const {history} = props
+const ShopCar = observer((props) => {
+    const {history, shopCarStore} = props
+    const {data, change} = shopCarStore
     const [changePState, setchangePState] = useState(false)
-    const [data, setdata] = useState({})
+    // const [data, setdata] = useState({})
     const [people, setpeople] = useState(0)
 
     useEffect(() => {
@@ -17,10 +20,24 @@ const ShopCar = (props) => {
             tableNum: getParams('tableNum')
         }).then((data) => {
             console.log(data.data)
-            setdata(data.data.table)
+            // setdata(data.data)
+            change(data.data)
             setpeople(data.data.table.people)
         })
     }, [])
+    const allPrice = useMemo(() => {
+        let {menus = []} = data
+        return menus.reduce((pre, item) => {
+            let {items} = item
+            let res = items.reduce((pre, jtem) => {
+                pre = pre + jtem.price * jtem.count
+                return pre
+            }, 0)
+            pre = pre + res
+            return pre
+        }, 0)
+    })
+    // 修改用餐人数
     const changePeopleH = () => {
         console.log(people)
         shopCar.changePeople({
@@ -31,6 +48,15 @@ const ShopCar = (props) => {
             alert('修改人数成功', 'success')
             setchangePState(false)
         })
+    }
+    // 修改购物车数量
+    const changeNum = (type, jtem) => {
+        if (type === "+") {
+            jtem.count++
+        } else if (type === "-" && jtem.count > 1) {
+            jtem.count--
+        }
+        // shopCar.
     }
     return <div className={Styles.ShopCar}>
         <Nav {...props}></Nav>
@@ -63,8 +89,14 @@ const ShopCar = (props) => {
                 </section>
                 <section>
                     <aside>
-                        <span>购物车里有:茶水1个</span>
-                        <b>合计:¥7000</b>
+                        <span>购物车里有:
+                            {
+                                data.menus && data.menus.map((item) => {
+                                    return item.name + item.items.length + '个 '
+                                })
+                            }
+                        </span>
+                        <b>合计:¥{serialize(allPrice)}</b>
                     </aside>
                     <aside className={Styles.topAsideRight}>
                         <i className='iconfont icon-empty'></i>
@@ -83,9 +115,7 @@ const ShopCar = (props) => {
                                     <aside className={Styles.itemLeft}>
                                         <p>
                                             <img src={jtem.user.url}/>
-                                            {/*<img src={jtem.imagePath}/>*/}
                                             <span>{jtem.user.nickname}</span>
-                                            {/*<span>{jtem.nickname}</span>*/}
                                         </p>
 
                                         <aside>
@@ -95,9 +125,9 @@ const ShopCar = (props) => {
                                     </aside>
                                     <aside className={Styles.itemRight}>
                                         <p>
-                                            <b>+</b>
+                                            <b onClick={() => changeNum('-', jtem)}>-</b>
                                             <span>{jtem.count}{jtem.account}</span>
-                                            <b>-</b>
+                                            <b onClick={() => changeNum('+', jtem)}>+</b>
                                         </p>
                                     </aside>
                                 </section>
@@ -108,6 +138,6 @@ const ShopCar = (props) => {
             }
         </main>
     </div>
-}
+})
 
-export default ShopCar
+export default () => <ShopCar shopCarStore={shopCarStore}/>
