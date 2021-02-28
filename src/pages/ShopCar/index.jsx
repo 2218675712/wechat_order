@@ -2,7 +2,7 @@ import Styles from './index.module.less'
 import Nav from "../../components/Nav";
 import BtnLink from "../../components/BtnLink";
 import {useEffect, useMemo, useState} from "react";
-import {shopCar} from "../../services";
+import {order, shopCar} from "../../services";
 import {getParams, serialize} from "../../utils/tool";
 import {shopCar as shopCarStore} from '../../store'
 import {observer} from "mobx-react";
@@ -56,7 +56,28 @@ const ShopCar = observer((props) => {
         } else if (type === "-" && jtem.count > 1) {
             jtem.count--
         }
-        // shopCar.
+        shopCar.changeShopCar({
+            id: jtem.id,
+            count: jtem.count
+        }).then(() => {
+
+        })
+    }
+    const clearShop = () => {
+        shopCar.clearShopCar({
+            shopId: getParams('shopId'),
+            tableNum: getParams('tableNum')
+        }).then(() => {
+            history.push('/project/list' + '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum"))
+        })
+    }
+    const sendOrder = () => {
+        order.sendOrder({
+            shopId: getParams('shopId'),
+            tableNum: getParams('tableNum')
+        }).then(() => {
+            // history.push('/order')
+        })
     }
     return <div className={Styles.ShopCar}>
         <Nav {...props}></Nav>
@@ -64,14 +85,12 @@ const ShopCar = observer((props) => {
             icon='icon-createtask'
             style={{bottom: '0.4rem', left: '3.25rem'}}
             cb={() => {
-                history.pushState('/project/list')
+                history.push('/project/list' + '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum"))
             }}>点菜</BtnLink>
         <BtnLink
             icon='icon-createtask'
             style={{bottom: '0.4rem', right: '0.2rem'}}
-            cb={() => {
-                history.pushState('/order')
-            }}>下单</BtnLink>
+            cb={() => sendOrder()}>下单</BtnLink>
         <main>
             <div className={Styles.top}>
                 <h2>购物车</h2>
@@ -100,7 +119,7 @@ const ShopCar = observer((props) => {
                     </aside>
                     <aside className={Styles.topAsideRight}>
                         <i className='iconfont icon-empty'></i>
-                        <p>清空</p>
+                        <p onClick={clearShop}>清空</p>
                     </aside>
                 </section>
             </div>
@@ -140,4 +159,4 @@ const ShopCar = observer((props) => {
     </div>
 })
 
-export default () => <ShopCar shopCarStore={shopCarStore}/>
+export default (props) => <ShopCar {...props} shopCarStore={shopCarStore}/>

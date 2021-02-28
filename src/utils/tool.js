@@ -17,9 +17,9 @@ export const getParams = (key) => {
  *
  * @param num 数值(Number或者String)
  * @return 金额格式的字符串,如'1,234,567.45'
- * @type String
+ *
  */
-export const serialize = (num) => {
+export const serialize = (num='') => {
     num = num.toString().replace(/\$|\,/g, '');
     if (isNaN(num))
         num = "0";

@@ -6,7 +6,7 @@ const {readMenuList} = require('./common/getInfo')
 const router = express.Router()
 // 下单
 router.post("/sendOrder", async (req, res, next) => {
-    const {shopId, tableNum} = req.query
+    const {shopId, tableNum} = req.body
     // 获取购物车数据
     let data = await fileHandle.read('../files/shopCar')
     let arr = data.filter((item) => {
@@ -30,12 +30,11 @@ router.post("/sendOrder", async (req, res, next) => {
             if (item.id == jtem.menuId) {
                 obj = Object.assign({}, item, jtem)
             }
-            if (obj) {
-                pre = pre + obj.count * obj.price
-            }
-            return pre
         })
-        console.log(allPrice)
+        if (obj) {
+            pre = pre + obj.count * obj.price
+        }
+        return pre
     }, 0)
     // 生成订单,写入到文件
     let result = {

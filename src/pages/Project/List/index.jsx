@@ -56,7 +56,7 @@ const List = (props) => {
     return <div>
         <SearchBtn icon='icon-search' cb={() => history.push('/project/search' + '?shopId=' + getParams("shopId"))}/>
         {/*<SearchBtn icon='icon-search' cb={() => history.push('/project/search')}/>*/}
-        <BtnLink icon='icon-publishgoods_fill' style={{bottom: '0.4rem', right: '0.2rem'}}>购物车</BtnLink>
+        <BtnLink cb={() => history.push('/shopCar'+'?shopId='+getParams("shopId")+'&userId='+getParams("userId")+'&tableNum='+getParams("tableNum"))} icon='icon-publishgoods_fill' style={{bottom: '0.4rem', right: '0.2rem'}}>购物车</BtnLink>
         <MenuItems list={list} findToClass={findToClass}>购物车</MenuItems>
         <Nav/>
         {callout && <CallOut cancel={() => setcallout(false)} sure={sure}/>}
