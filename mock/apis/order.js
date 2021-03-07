@@ -1,6 +1,7 @@
 const express = require("express")
 const fileHandle = require("../utils/fileHandle")
 const Unique = require('../utils/Unique')
+const createTime = require("../utils/createTime");
 const {readMenuList} = require('./common/getInfo')
 
 const router = express.Router()
@@ -74,6 +75,23 @@ router.get("/getOrder", async (req, res, next) => {
     res.send({
         code: 200,
         data: result || {},
+        msg: "Ok"
+    })
+})
+//支付
+router.post("/pay", async (req, res, next) => {
+    const {shopId, tableNum} = req.body
+    let allOrder = await fileHandle.read('../files/order')
+    let data = allOrder.map((item) => {
+        if (item.shopId == shopId && item.tableNum == tableNum && item.isPay == false) {
+            item.isPay = true;
+            item.time = createTime()
+        }
+        return item
+    })
+    await fileHandle.write('../files/order',data)
+    res.send({
+        code: 200,
         msg: "Ok"
     })
 })
