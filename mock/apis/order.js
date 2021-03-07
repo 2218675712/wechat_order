@@ -6,7 +6,7 @@ const {readMenuList} = require('./common/getInfo')
 const router = express.Router()
 // 下单
 router.post("/sendOrder", async (req, res, next) => {
-    const {shopId, tableNum} = req.body
+    const {shopId, tableNum, userId} = req.body
     // 获取购物车数据
     let data = await fileHandle.read('../files/shopCar')
     let arr = data.filter((item) => {
@@ -41,6 +41,7 @@ router.post("/sendOrder", async (req, res, next) => {
         id: Unique(),
         shopId,
         tableNum,
+        userId,
         menus: arr,
         allPrice,
         isPay: false
@@ -50,8 +51,29 @@ router.post("/sendOrder", async (req, res, next) => {
     for (const item of arr) {
         await fileHandle.remove("../files/shopCar", "id", item.id)
     }
+    // 清除table
+    let tablearr = await fileHandle.read('../files/table')
+    tablearr = tablearr.filter((item) => {
+        return item.shopId == shopId && item.tableNum == tableNum
+    })
+    for (const item of tablearr) {
+        await fileHandle.remove("../files/table", "id", item.id)
+    }
     res.send({
         code: 200,
+        msg: "Ok"
+    })
+})
+// 获取订单
+router.get("/getOrder", async (req, res, next) => {
+    const {shopId, tableNum} = req.query
+    let allOrder = await fileHandle.read('../files/order')
+    let result = allOrder.find((item) => {
+        return item.shopId == shopId && item.tableNum == tableNum && item.isPay == false
+    })
+    res.send({
+        code: 200,
+        data: result || {},
         msg: "Ok"
     })
 })

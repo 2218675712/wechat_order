@@ -20,6 +20,11 @@ const ShopCar = observer((props) => {
             tableNum: getParams('tableNum')
         }).then((data) => {
             console.log(data.data)
+            // 意味着有未支付的订单
+            if (data.state == false) {
+                history.push('/order' + '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum"))
+                return
+            }
             // setdata(data.data)
             change(data.data)
             setpeople(data.data.table.people)
@@ -74,9 +79,10 @@ const ShopCar = observer((props) => {
     const sendOrder = () => {
         order.sendOrder({
             shopId: getParams('shopId'),
-            tableNum: getParams('tableNum')
+            tableNum: getParams('tableNum'),
+            userId: getParams('userId')
         }).then(() => {
-            // history.push('/order')
+            history.push('/order')
         })
     }
     return <div className={Styles.ShopCar}>

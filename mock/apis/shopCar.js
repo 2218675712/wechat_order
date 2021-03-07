@@ -3,11 +3,26 @@ const fileHandle = require("../utils/fileHandle")
 const Unique = require('../utils/Unique')
 const createTime = require("../utils/createTime");
 const {getUsers} = require('./common/getInfo')
-
+const middle = async ({shopId, tableNum}) => {
+    let allOrder = await fileHandle.read('../files/order')
+    let state = allOrder.some((item) => {
+        return item.shopId == shopId && item.tableNum == tableNum && item.isPay == false
+    })
+    return state
+}
 const router = express.Router()
 // 添加购物车
 router.post("/sendShopCar", async (req, res, next) => {
     const {shopId, userId, tableNum, menuId, count} = req.body
+    const state = await middle(req.body)
+    if (state) {
+        res.send({
+            code: 200,
+            state: false,
+            msg: 'ok'
+        })
+        return
+    }
     let data = {
         id: Unique(),
         shopId,
@@ -34,6 +49,15 @@ router.post("/sendShopCar", async (req, res, next) => {
 // 获取购物车数据
 router.get("/getShopCar", async (req, res, next) => {
     let {shopId, tableNum} = req.query
+    const state = await middle(req.query)
+    if (state) {
+        res.send({
+            code: 200,
+            state: false,
+            msg: 'ok'
+        })
+        return
+    }
     let data = await fileHandle.read('../files/shopCar')
     let result = data.filter((item) => {
         return item.shopId == shopId && item.tableNum == tableNum
@@ -56,7 +80,7 @@ router.get("/getShopCar", async (req, res, next) => {
                 let user = users.find((item) => {
                     return item.id == obj.userId
                 })
-                let data = Object.assign({}, jtem,obj, {user})
+                let data = Object.assign({}, jtem, obj, {user})
                 pre.push(data)
             }
             return pre
@@ -68,7 +92,7 @@ router.get("/getShopCar", async (req, res, next) => {
     }, [])
 
     let table = await fileHandle.read('../files/table')
-    table=table.find((item) => {
+    table = table.find((item) => {
         return item.shopId == shopId && item.tableNum == tableNum
     })
 

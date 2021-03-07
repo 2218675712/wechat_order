@@ -26,7 +26,17 @@ const Detail = (props) => {
             tableNum: getParams("tableNum"),
             menuId: match.params.id,
             count: count
-        }).then(() => {
+        }).then((data) => {
+
+            // 意味着有未支付的订单
+            if (data.state==false){
+                alert('有未支付的订单', 'success')
+                setTimeout(()=>{
+                history.push('/order'+ '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum"))
+                },1000)
+                return
+            }
+
             alert('购物车添加成功', 'success')
             setTimeout(() => {
                 history.push('/shopCar'+'?shopId='+getParams("shopId")+'&userId='+getParams("userId")+'&tableNum='+getParams("tableNum"))
