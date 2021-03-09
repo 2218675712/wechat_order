@@ -72,6 +72,21 @@ router.get("/getOrder", async (req, res, next) => {
     let result = allOrder.find((item) => {
         return item.shopId == shopId && item.tableNum == tableNum && item.isPay == false
     })
+    result = result || {}
+    let data = await readMenuList(shopId)
+    if (result.menus) {
+        result.menus = result.menus.map((item) => {
+            let obj = data.find((jtem) => {
+                if (jtem.id == item.menuId) {
+                    return true
+                }
+                return false
+            })
+            delete obj.id
+            Object.assign(item, obj)
+            return item
+        })
+    }
     res.send({
         code: 200,
         data: result || {},
@@ -89,7 +104,7 @@ router.post("/pay", async (req, res, next) => {
         }
         return item
     })
-    await fileHandle.write('../files/order',data)
+    await fileHandle.write('../files/order', data)
     res.send({
         code: 200,
         msg: "Ok"
