@@ -8,25 +8,25 @@ const Nav = () => {
         {state ?
             <div className={Styles.navList}>
                 <section>
-                    <Link to=''>
+                    <Link to='/project/list'>
                         <p>
                             <i className='iconfont icon-createtask'></i>
                         </p>
                         <span>菜单</span>
                     </Link>
-                    <Link to=''>
+                    <Link to='/shopCar'>
                         <p>
                             <i className='iconfont icon-publishgoods_fill'></i>
                         </p>
                         <span>购物车</span>
                     </Link>
-                    <Link to=''>
+                    <Link to='/order'>
                         <p>
                             <i className='iconfont icon-document'></i>
                         </p>
                         <span>已下单的菜</span>
                     </Link>
-                    <Link to=''>
+                    <Link to='/pc/index'>
                         <p>
                             <i className='iconfont icon-addressbook'></i>
                         </p>
