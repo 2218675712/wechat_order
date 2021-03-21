@@ -1,24 +1,27 @@
 [
   {
-    "id": "orH6d1BlTsF3LiogJRJ3322BPREaSzz8",
-    "nickname": "追梦人",
-    "mobile": "",
-    "url": "http://thirdwx.qlogo.cn/mmopen/vi_32/5L5hZI2btoNJNb7w13lml1gsewFnRgcSickbVJr7VUUFSbeibwjH8X1qxgic0Kl7LqPItqXMnsONh8nJ5Qnyia273g/132",
-    "sex": "0",
-    "anniversaryName": "",
-    "anniversaryDay": "",
-    "birthday": "",
-    "isCanSetBirthday": 1,
-    "isCanSetAnniversary": 1,
-    "countryCode": "+86",
-    "fireSeedLevel": 1,
-    "vip": false,
-    "mobileIsVerified": 0,
-    "haveSetPassword": false,
-    "plateNumber": 0,
-    "faceId": 0,
-    "setTaste": false,
-    "phone": "110",
-    "email": "34242234"
+    "id": "MWMwNjllZTctNmQ2OC00Mjk4LWFkYjctMWQwYmQzYzJlY2Iy",
+    "shopId": "b9a5eea53c8d4f154174dbff53892e24",
+    "tableNum": "10",
+    "userId": "orH6d1BlTsF3LiogJRJ3322BPREaSzz8",
+    "menus": [
+      {
+        "id": "ODgyZmI1NzEtZmEzMS00MGU1LTk5MzItMDNlNTgwYTBmNjI5",
+        "shopId": "b9a5eea53c8d4f154174dbff53892e24",
+        "userId": "orH6d1BlTsF3LiogJRJ3322BPREaSzz8",
+        "tableNum": "10",
+        "menuId": "0003904266ecfb7a0166f8b4b0c439fd",
+        "count": 3
+      }
+    ],
+    "allPrice": 165.03,
+    "isPay": true,
+    "time": "2021-03-10 10:18:24",
+    "evaluate": {
+      "evaluate": 3,
+      "taste": 3,
+      "speed": 1,
+      "enviroment": 5
+    }
   }
 ]

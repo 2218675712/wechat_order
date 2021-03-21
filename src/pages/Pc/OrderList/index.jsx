@@ -52,7 +52,7 @@ const OrderList = (props) => {
                             </ul>
                             <p>
                                 <Link
-                                    to={"/pc/orderListEvaluate/" + item.id}>我要评价</Link>
+                                    to={"/pc/orderListEvaluate/" + item.id+ '?shopId=' + getParams("shopId") + '&userId=' + getParams("userId") + '&tableNum=' + getParams("tableNum")}>我要评价</Link>
                             </p>
                         </div>
                     })
